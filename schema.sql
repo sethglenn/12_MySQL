@@ -25,3 +25,13 @@ CREATE TABLE employee (
     manager_id INT NOT NULL,
 
 );
+
+INSERT INTO role (title, salary, department_id)
+VALUES ("Service Writer", 45000, 1);
+INSERT INTO role (title, salary, department_id)
+VALUES ("Mechanic", 55000, 2);
+
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ("Jane", "Doe", 1, null);
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ("John", "Myer", 2, null);

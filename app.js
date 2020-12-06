@@ -4,13 +4,17 @@ const inquirer = require('inquirer');
 var connection = mysql.createConnection({
     host: "localhost",
   
-    // Your port; if not 3306
+    // Port
     port: 3306,
   
-    // Your username
+    // Username
     user: "root",
   
-    // Your password
+    // Password
     password: "password",
     database: "employees_db"
   });
+
+  connection.connect(function (err) {
+    if (err) throw err;
+  })
