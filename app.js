@@ -3,18 +3,36 @@ const inquirer = require('inquirer');
 
 var connection = mysql.createConnection({
     host: "localhost",
-  
-    // Port
+
     port: 3306,
-  
-    // Username
+
     user: "root",
-  
-    // Password
+
     password: "password",
     database: "employees_db"
-  });
+});
 
-  connection.connect(function (err) {
+connection.connect(function (err) {
     if (err) throw err;
-  })
+    initPrompt();
+})
+
+function initPrompt() {
+    inquirer
+        .prompt({
+            name: "action",
+            type: "list",
+            message: "What would you like to do?",
+            choices: [
+                "View All Employees",
+                "View All Departments",
+                "View All Roles",
+                "Add Employees",
+                "Add Departments",
+                "Add Roles",
+                "Update Employee Role",
+                "exit"
+            ]
+
+        })
+}
