@@ -80,7 +80,7 @@ function searchAll() {
     );
 };
 function searchEmp() {
-    connection.query("SELECT * from role", function (err, res) {
+    connection.query("SELECT * from roles", function (err, res) {
         if (err) throw err;
         console.table(res);
         initPrompt();
@@ -155,7 +155,7 @@ function addRole() {
         }
     ];
     inquirer.prompt(questions).then(function (answer) {
-        connection.query("INSERT INTO role SET ?",
+        connection.query("INSERT INTO roles SET ?",
             {
                 title: answer.title,
                 department_id: answer.id,
@@ -179,5 +179,5 @@ function updateRole() {
         message: "Which role would you like to assign to the employee?",
         choices: choices
     })
-    connection.query("UPDATE employee SET role_id = ? WHERE employee_id = ?", [roleID, empID])
+    connection.query("UPDATE employee SET roles_id = ? WHERE employee_id = ?", [rolesID, empID])
 };
