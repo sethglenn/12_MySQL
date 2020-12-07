@@ -6,7 +6,7 @@
 
   ## Description
 
-This is an application that runs on express methods in the node.js terminal. It will store and retrieve files through server back-end and update and employee system based in MySQL.
+This is an application that runs on express methods in the node.js terminal. It will store and retrieve files through server back-end and update an employee system based in MySQL.
 
 You can add, view, and update employee information.
 
