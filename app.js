@@ -1,5 +1,6 @@
-const mysql = require('mysql');
-const inquirer = require('inquirer');
+const mysql = require("mysql");
+const inquirer = require("inquirer");
+const table = require("console.table");
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -58,6 +59,9 @@ function initPrompt() {
                 case "Update Employee Role":
                     updateRole();
                     break;
+                case "exit":
+                    connection.end();
+                    break;
             }
 
 
@@ -71,7 +75,7 @@ function searchDept() {
     })
 };
 function searchAll() {
-    connection.query("SELECT employee.employee_id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary, CONCAT(manager.first_name, ' ', manager.last_name) AS manager FROM employee LEFT JOIN role on employee.role_id = role.role_id LEFT JOIN department on role.department_id = department.department_id LEFT JOIN employee manager on manager.manager_id = employee.manager_id;",
+    connection.query("SELECT employee.employee_id, employee.first_name, employee.last_name, roles.title, department.department_name AS department, roles.salary, FROM employee LEFT JOIN role on employee.role_id = roles.role_id LEFT JOIN department on roles.department_id = department.department_id;",
         function (err, res) {
             if (err) throw err;
             console.table(res);
@@ -170,8 +174,9 @@ function addRole() {
 };
 function updateRole() {
     let employees = searchAll();
-    let choices = employees.map(index => {
-        id: id;
+    let choices = employees.map(data => {
+        value: data.id,
+        name: data.id
     })
     inquirer.prompt({
         type: "list",

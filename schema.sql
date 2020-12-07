@@ -6,8 +6,9 @@ USE employees_db;
 
 CREATE TABLE department (
     department_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(30) NOT NULL
+    department_name VARCHAR(30) NOT NULL
 );
+
 
 CREATE TABLE roles (
     roles_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -22,10 +23,9 @@ CREATE TABLE employee (
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
     role_id INT
-
 );
 
-INSERT INTO department (name)
+INSERT INTO department (department_name)
 VALUES ("Service"), ("Sales"), ("Parts"), ("Management");
 
 INSERT INTO roles (title, salary, department_id)
