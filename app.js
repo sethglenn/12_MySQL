@@ -50,9 +50,9 @@ function searchDept(){
         console.table(res);
         initPrompt();
     })
-}
+};
 
-function viewAll(){
+function searchAll(){
     connection.query("SELECT employee.employee_id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary, CONCAT(manager.first_name, ' ', manager.last_name) AS manager FROM employee LEFT JOIN role on employee.role_id = role.role_id LEFT JOIN department on role.department_id = department.department_id LEFT JOIN employee manager on manager.manager_id = employee.manager_id;",
         function(err, res) {
             if (err) throw err;
@@ -68,4 +68,17 @@ function searchEmp(){
         console.table(res);
         initPrompt();
     })
+};
+function updateRole(){
+    let employees = searchAll();
+    let choices = employees.map(index => {
+        id: id;
+    })
+    inquirer.prompt({
+        type: "list",
+        name: "role id",
+        message: "Which role would you like to assign to the employee?",
+        choices: choices
+    })
+    connection.query("UPDATE employee SET role_id = ? WHERE employee_id = ?" , [roleID, empID])
 }
