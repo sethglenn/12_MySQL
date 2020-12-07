@@ -115,28 +115,56 @@ function addEmployee() {
         );
     });
 };
-function addDept(){
+function addDept() {
     inquirer.prompt({
         type: "input",
         message: "What would you like to name the new department?",
         name: "department"
     })
-    .then(function(answer){
-        connection.query("INSERT INTO department SET ?",
+        .then(function (answer) {
+            connection.query("INSERT INTO department SET ?",
+                {
+                    name: answer.department,
+                },
+                function (err, res) {
+                    if (err) throw err;
+                    initPrompt();
+                }
+            );
+        });
+};
+function addRole() {
+    let questions = [
+        {
+            type: "input",
+            message: "What type of role would you like to add?",
+            name: "title"
+        },
+        {
+            type: "input",
+            message: "In what department is the new role?",
+            name: "id"
+        },
+        {
+            type: "list",
+            message: "What is the salary for this role?",
+            name: "salary"
+        }
+    ];
+    inquirer.prompt(questions).then(function (answer) {
+        connection.query("INSERT INTO role SET ?",
             {
-                name: answer.department,
+                title: answer.title,
+                department_id: answer.id,
+                salary: answer.salary
             },
-            function(err, res) {
+            function(err, res){
                 if (err) throw err;
                 initPrompt();
             }
         );
     });
 };
-
-
-
-
 function updateRole() {
     let employees = searchAll();
     let choices = employees.map(index => {
