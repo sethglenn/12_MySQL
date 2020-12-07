@@ -112,13 +112,27 @@ function addEmployee() {
                 if (err) throw err;
                 searchAll();
             }
-
         );
     });
-
-
 };
-
+function addDept(){
+    inquirer.prompt({
+        type: "input",
+        message: "What would you like to name the new department?",
+        name: "department"
+    })
+    .then(function(answer){
+        connection.query("INSERT INTO department SET ?",
+            {
+                name: answer.department,
+            },
+            function(err, res) {
+                if (err) throw err;
+                initPrompt();
+            }
+        );
+    });
+};
 
 
 
