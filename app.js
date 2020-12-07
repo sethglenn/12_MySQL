@@ -49,7 +49,15 @@ function initPrompt() {
                 case "Add Employees":
                     addEmployee();
                     break;
-
+                case "Add Departments":
+                    addDept();
+                    break;
+                case "Add Roles":
+                    addRole();
+                    break;
+                case "Update Employee Role":
+                    updateRole();
+                    break;
             }
 
 
@@ -158,7 +166,7 @@ function addRole() {
                 department_id: answer.id,
                 salary: answer.salary
             },
-            function(err, res){
+            function (err, res) {
                 if (err) throw err;
                 initPrompt();
             }
