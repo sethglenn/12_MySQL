@@ -107,15 +107,17 @@ function addEmployee() {
                 first_name: answer.first_name,
                 last_name: answer.last_name,
                 role_id: answer.titleID,
-                manager_id: answer.managerID,
             },
+            function (err) {
+                if (err) throw err;
+                searchAll();
+            }
+
+        );
+    });
 
 
-        )
-    })
-
-
-}
+};
 
 
 
