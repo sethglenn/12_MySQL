@@ -15,7 +15,7 @@ You can add, view, and update employee information.
   Video Demonstration:
 
   ## Images
-![Screenshot01](./assets/screenshot01.png)
+![Screenshot01](./Assets/screenshot01.png)
 
 
  ## Questions
