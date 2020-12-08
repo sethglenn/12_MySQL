@@ -43,20 +43,20 @@ role_id INT NULL
 INSERT INTO employee (first_name, last_name, role_id)
 VALUES ("John", "Doe", 1);
 INSERT INTO employee (first_name, last_name, role_id)
-VALUES ("Julia", "Doe", 2);
+VALUES ("Julian", "Doe", 2);
 INSERT INTO employee (first_name, last_name, role_id)
-VALUES ("Jarrod", "Doe", 3);
+VALUES ("Jerry", "Doe", 3);
 INSERT INTO employee (first_name, last_name, role_id)
-VALUES ("Ryan", "Doe", 4);
+VALUES ("Ron", "Doe", 4);
 INSERT INTO employee (first_name, last_name, role_id)
 VALUES ("Ashley", "Doe", 5);
 INSERT INTO employee (first_name, last_name, role_id)
 VALUES ("Jan", "Doe", 6);
 INSERT INTO employee (first_name, last_name, role_id)
-VALUES  ("Austin", "Doe", 7);
+VALUES  ("John", "Doe", 7);
 INSERT INTO employee (first_name, last_name, role_id)
 VALUES  ("Ian", "Doe", 8);
 INSERT INTO employee (first_name, last_name, role_id)
-VALUES ("Jane", "Doe", 5);
+VALUES ("Jane", "Doe", 9);
 INSERT INTO employee  (first_name, last_name, role_id)
-VALUES ("Amanda", "Doe", 6);
+VALUES ("Alex", "Doe", 10);

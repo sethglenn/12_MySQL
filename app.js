@@ -79,7 +79,6 @@ function searchAll() {
         function (err, res) {
             if (err) throw err;
             console.table(res);
-            // console.log(table(res));
             initPrompt();
 
         }
@@ -133,7 +132,7 @@ function addDept() {
         .then(function (answer) {
             connection.query("INSERT INTO department SET ?",
                 {
-                    name: answer.department,
+                    department_name: answer.department,
                 },
                 function (err, res) {
                     if (err) throw err;
@@ -177,7 +176,7 @@ function addRole() {
 function updateRole() {
     let employees = searchAll();
     let choices = employees.map(index => {
-        id: id;
+        index: id;
     })
     inquirer.prompt({
         type: "list",
