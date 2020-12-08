@@ -2,7 +2,7 @@ const mysql = require("mysql");
 const inquirer = require("inquirer");
 const table = require("console.table");
 
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
     host: "localhost",
 
     port: 3306,
@@ -36,7 +36,7 @@ function initPrompt() {
             ]
 
         })
-        .then(function (answer) {
+        .then(function(answer) {
             switch (answer.action) {
                 case "View all Employees":
                     searchAll();
@@ -75,11 +75,13 @@ function searchDept() {
     })
 };
 function searchAll() {
-    connection.query("SELECT employee.employee_id, employee.first_name, employee.last_name, roles.title, department.department_name AS department, roles.salary, FROM employee LEFT JOIN role on employee.role_id = roles.role_id LEFT JOIN department on roles.department_id = department.department_id;",
+    connection.query("SELECT employee.employee_id, employee.first_name, employee.last_name, roles.title, department.department_name AS department, roles.salary, CONCAT(first_name, ' ', last_name) AS manager FROM employee LEFT JOIN roles on employee.role_id = roles.roles_id LEFT JOIN department on roles.department_id;",
         function (err, res) {
             if (err) throw err;
             console.table(res);
+            // console.log(table(res));
             initPrompt();
+
         }
     );
 };
@@ -174,9 +176,8 @@ function addRole() {
 };
 function updateRole() {
     let employees = searchAll();
-    let choices = employees.map(data => {
-        value: data.id,
-        name: data.id
+    let choices = employees.map(index => {
+        id: id;
     })
     inquirer.prompt({
         type: "list",
